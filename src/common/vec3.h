@@ -18,9 +18,9 @@ public:
 
     vec3 operator-() const { return vec3(-e[0], -e[1], -e[2]); }
     double operator[](int i) const { return e[i]; }
-    double& operator[](int i) { return e[i]; }
+    double &operator[](int i) { return e[i]; }
 
-    vec3& operator+=(const vec3 &v)
+    vec3 &operator+=(const vec3 &v)
     {
         e[0] += v.e[0];
         e[1] += v.e[1];
@@ -28,7 +28,7 @@ public:
         return *this;
     }
 
-    vec3& operator*=(const double t)
+    vec3 &operator*=(const double t)
     {
         e[0] *= t;
         e[1] *= t;
@@ -36,7 +36,7 @@ public:
         return *this;
     }
 
-    vec3& operator/=(const double t)
+    vec3 &operator/=(const double t)
     {
         return *this *= 1 / t;
     }
@@ -57,9 +57,7 @@ public:
 
 // Type aliases for vec3
 using point3 = vec3; // 3D Point
-using colour = vec3;  // RGB Color
-
-#endif // !VEC3_H
+using colour = vec3; // RGB Color
 
 // vec3 Utility Functions
 
@@ -99,9 +97,7 @@ inline vec3 operator/(vec3 v, double t)
 
 inline double dot(const vec3 &u, const vec3 &v)
 {
-    return u.e[0] * v.e[0]
-         + u.e[1] * v.e[1]
-         + u.e[2] * v.e[2];
+    return u.e[0] * v.e[0] + u.e[1] * v.e[1] + u.e[2] * v.e[2];
 }
 
 inline vec3 cross(const vec3 &u, const vec3 &v)
@@ -115,3 +111,5 @@ inline vec3 unit_vector(vec3 v)
 {
     return v / v.length();
 }
+
+#endif // !VEC3_H
